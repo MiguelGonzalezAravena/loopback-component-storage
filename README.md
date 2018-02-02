@@ -47,6 +47,38 @@ Example
 [...]
   ```
 
+## Use
+Now you can use Container's name with slash! If you want to create a directory, like `this/isMy/newContainer`, you have to use the char `%2F` instead of `/`, so your Container's name going to be `this%2FisMy%2FnewContainer`.
+
+## URL Example
+Syntax
+```
+[POST] <<YOUR_URL>>:<<YOUR_PORT>>/api/Containers/<<CONTAINER_NAME>>/
+[POST] <<YOUR_URL>>:<<YOUR_PORT>>/api/Containers/<<CONTAINER_NAME>>/upload (For upload file)
+```
+
+Example
+```
+[POST] http://example.com:3000/api/Containers/images%2Fprofile%2Fpersonal/
+[POST] http://example.com:3000/api/Containers/images%2Fprofile%2Fpersonal/upload (For upload file)
+```
+
+## Add option to your dataSources.json
+If you want a default name only for the upload images (not files), you have to add `defaultImageName` to your Container options.
+**datasources.json**
+```
+[...]
+  "container": {
+    "name": "container",
+    "connector": "loopback-component-storage",
+    "provider": "filesystem",
+    "maxFileSize": "10485760",
+    "root": "./storage",
+    "defaultImageName": "photo"
+  }
+[...]
+  ```
+
 ## Examples
 
 See https://github.com/strongloop/loopback-example-storage.
